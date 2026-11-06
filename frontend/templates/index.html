@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An AI-powered assistant for generating, explaining, debugging and improving code.">
+  <title>CodeMate AI — Coding Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">&lt;/&gt;</span><span>CodeMate <b>AI</b></span></div>
+      <button class="new-chat" id="newChatBtn">＋ New session</button>
+      <p class="side-label">WORKSPACE</p>
+      <button class="nav-item active" data-action="chat">✦ <span>AI Assistant</span></button>
+      <button class="nav-item" data-action="generate">⌘ <span>Code Generator</span></button>
+      <button class="nav-item" data-action="debug">⚒ <span>Debug Code</span></button>
+      <button class="nav-item" data-action="explain">▤ <span>Explain Code</span></button>
+      <button class="nav-item" data-action="optimize">↗ <span>Optimize Code</span></button>
+      <button class="nav-item" data-action="convert">⇄ <span>Convert Language</span></button>
+      <div class="sidebar-bottom">
+        <p class="side-label">RECENT ACTIVITY</p>
+        <div id="historyList" class="history-list"><span class="muted small">Loading history…</span></div>
+        <button class="clear-history" id="clearHistoryBtn">Clear history</button>
+        <div class="profile"><div class="avatar">AI</div><div><b>Developer Workspace</b><small>Mini project edition</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div><span class="status-dot"></span><span id="modeLabel">AI Assistant</span></div>
+        <div class="topbar-right"><span class="model-pill">✦ Gemini-powered</span></div>
+      </header>
+
+      <section class="workspace">
+        <div class="welcome" id="welcomePanel">
+          <div class="welcome-icon">✦</div>
+          <p class="eyebrow">YOUR AI DEVELOPMENT PARTNER</p>
+          <h1>Build something<br><span>brilliant.</span></h1>
+          <p class="welcome-copy">Ask questions, generate code, fix bugs, and understand programming concepts — all in one place.</p>
+          <div class="quick-actions">
+            <button class="quick-card" data-action="generate"><span>⌘</span><b>Generate code</b><small>Turn an idea into code</small></button>
+            <button class="quick-card" data-action="debug"><span>⚒</span><b>Debug code</b><small>Find and fix problems</small></button>
+            <button class="quick-card" data-action="explain"><span>▤</span><b>Explain code</b><small>Understand every step</small></button>
+            <button class="quick-card" data-action="optimize"><span>↗</span><b>Optimize code</b><small>Improve your solution</small></button>
+          </div>
+        </div>
+
+        <div class="conversation" id="conversation" aria-live="polite"></div>
+
+        <section class="composer-wrap">
+          <div class="editor-tools">
+            <label for="languageSelect">Language</label>
+            <select id="languageSelect">
+              <option>Python</option><option>JavaScript</option><option>Java</option>
+              <option>C</option><option>C++</option><option>HTML</option><option>SQL</option>
+            </select>
+            <label for="targetLanguage" id="targetLabel" class="hidden">Convert to</label>
+            <select id="targetLanguage" class="hidden">
+              <option>JavaScript</option><option>Python</option><option>Java</option>
+              <option>C</option><option>C++</option>
+            </select>
+            <button id="toggleCodeBtn" class="text-button">＋ Add code</button>
+          </div>
+          <textarea id="codeInput" class="code-input hidden" spellcheck="false" placeholder="Paste your code here…"></textarea>
+          <div class="prompt-row">
+            <textarea id="promptInput" rows="2" placeholder="Ask CodeMate anything about programming…"></textarea>
+            <button id="sendBtn" class="send-btn" aria-label="Send message">↑</button>
+          </div>
+          <div class="composer-footer"><span>Enter to send · Shift + Enter for a new line</span><span>AI can make mistakes. Review generated code.</span></div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+</html>
